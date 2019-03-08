@@ -1,0 +1,12 @@
+language: java
+install:
+  - gradle
+
+jdk:
+  - oraclejdk8
+
+script:
+  - ./gradlew build
+
+after_script:
+  - rm -rf build out
