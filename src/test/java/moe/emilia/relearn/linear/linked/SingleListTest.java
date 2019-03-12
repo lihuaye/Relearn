@@ -59,4 +59,28 @@ public class SingleListTest {
         Assert.assertSame(sl.get(3), testData.get(3));
         Assert.assertSame(sl.get(4), testData.get(4));
     }
+
+    @Test
+    public void testBoundary() {
+        List<String> testData = Arrays.asList("C/C++");
+        SingleList<String> sl = new SingleList<>();
+        for (String data : testData) {
+            sl.add(data);
+        }
+        boolean equals = ListUtils.isEquals(testData, sl.toArray());
+        Assert.assertTrue("结果不匹配", equals);
+
+        List<String> testData1 = Arrays.asList();
+        SingleList<String> sl1 = new SingleList<>();
+        boolean equals1 = ListUtils.isEquals(testData1, sl1.toArray());
+        Assert.assertTrue("结果不匹配", equals1);
+
+        List<String> testData2 = Arrays.asList("C/C++", "Java");
+        SingleList<String> sl2 = new SingleList<>();
+        for (String data : testData2) {
+            sl2.add(data);
+        }
+        boolean equals2 = ListUtils.isEquals(testData2, sl2.toArray());
+        Assert.assertTrue("结果不匹配", equals2);
+    }
 }
